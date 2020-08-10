@@ -11,10 +11,13 @@ exports.signin = async (req, res) => {
     if (!user) {
       throw new Error("USER NOT REGISTERED");
     }
-    const truee = await bcrypt.compare(process.env.SECRET, user.password);
+    // var hash = await bcrypt.hashS(process.env.SECRET, 8);
+
+    const truee = await bcrypt.compare(req.body.password, user.password);
+
     if (truee) {
       var token = jwt.sign({ id: user._id }, process.env.SECRET);
-      console.log(token);
+      // console.log(token);
     } else {
       throw new Error("Invalid password");
     }
@@ -40,8 +43,8 @@ exports.signout = (req, res) => {
 };
 exports.signup = async (req, res) => {
   try {
-    var hash = bcrypt.hashSync(process.env.SECRET, 8);
-   // console.log(hash);
+    var hash = await bcrypt.hash(req.body.password, 12);
+    // console.log(hash);
     if (!req.body.email || !req.body.password || !req.body.name) {
       throw new Error("please enter all fields");
     }
@@ -71,7 +74,7 @@ exports.isAuthenticated = async (req, res, next) => {
     } else if (req.cookies.jwt) {
       token = req.cookies.jwt;
     }
-   // console.log(req.headers);
+    // console.log(req.headers);
     if (!token) {
       throw new Error("You must be logged in!");
     }
@@ -106,7 +109,7 @@ exports.uploadphoto = (req, res) => {
 
       res.json(user);
     } catch (err) {
-     // console.log(err.message);
+      // console.log(err.message);
     }
   });
 };
@@ -122,7 +125,7 @@ exports.uploadphotoincloud = (req, res) => {
   form.parse(req, async (err, fields, file) => {
     try {
       var d = { file: file.file };
-   //   console.log(d);
+      //   console.log(d);
       if (err) {
         return res.json(err);
       }
