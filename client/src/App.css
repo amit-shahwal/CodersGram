@@ -1,0 +1,32 @@
+a {
+  color: black !important;
+}
+.auth-card {
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 10px auto;
+}
+.active_class {
+  color: red !important;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.item {
+  width: 30%;
+  margin-bottom: 10px;
+}
+
+.home-card {
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
+}
+
+.material-icons:hover {
+  cursor: pointer;
+}
