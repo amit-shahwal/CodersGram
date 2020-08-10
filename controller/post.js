@@ -5,7 +5,7 @@ exports.getAllPost = async (req, res) => {
     const post = await Post.find().populate(
       "postedBy comments.postedBy",
       "name email _id"
-    );
+    ).sort("-createdAt");
     res.status(200).json({
       post,
     });
@@ -19,7 +19,7 @@ exports.getsubPost = async (req, res) => {
   try {
     const post = await Post.find({
       postedBy: { $in: req.userfront.following },
-    }).populate("postedBy comments.postedBy", "name email _id");
+    }).populate("postedBy comments.postedBy", "name email _id").sort("-createdAt");
     res.status(200).json({
       post,
     });
