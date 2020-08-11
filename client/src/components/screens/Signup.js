@@ -65,7 +65,7 @@ export default function Signup() {
   return (
     <div className="mycard">
       <div className="card auth-card">
-        <h2>Instagram</h2>
+        <h2>CodersGram👨‍💻</h2>
         <input
           type="text"
           placeholder="name"
