@@ -4,7 +4,7 @@ exports.getAllPost = async (req, res) => {
   try {
     const post = await Post.find().populate(
       "postedBy comments.postedBy",
-      "name email _id"
+      "name email _id photo"
     ).sort("-createdAt");
     res.status(200).json({
       post,
@@ -19,7 +19,7 @@ exports.getsubPost = async (req, res) => {
   try {
     const post = await Post.find({
       postedBy: { $in: req.userfront.following },
-    }).populate("postedBy comments.postedBy", "name email _id").sort("-createdAt");
+    }).populate("postedBy comments.postedBy", "name email _id photo").sort("-createdAt");
     res.status(200).json({
       post,
     });
@@ -67,7 +67,7 @@ exports.like = async (req, res) => {
         $push: { likes: req.userfront._id },
       },
       { new: true }
-    ).populate("postedBy", "name email _id");
+    ).populate("postedBy", "name email _id photo");
     res.status(200).json(post);
   } catch (error) {
     res.json({
@@ -83,7 +83,7 @@ exports.unlike = async (req, res) => {
         $pull: { likes: req.userfront._id },
       },
       { new: true }
-    ).populate("postedBy", "name email");
+    ).populate("postedBy", "name email photo");
     res.status(200).json(post);
   } catch (error) {
     res.json({
@@ -103,7 +103,7 @@ exports.comment = async (req, res) => {
         $push: { comments: comment },
       },
       { new: true }
-    ).populate("comments.postedBy postedBy", "name _id");
+    ).populate("comments.postedBy postedBy", "name _id photo");
     res.status(200).json(post);
   } catch (error) {
     res.json({
@@ -115,7 +115,7 @@ exports.deletepost = async (req, res) => {
   try {
     const post = await Post.findOne({ _id: req.params.postId }).populate(
       "postedBy",
-      "_id"
+      "_id photo"
     );
     if (post.postedBy._id.toString() === req.userfront._id.toString()) {
       const result = await post.remove();

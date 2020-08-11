@@ -14,7 +14,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((result) => {
         Setdata(result.post);
-        //console.log(result.post);
+        console.log(result.post);
       });
   }, []);
   const likePost = (id) => {
@@ -30,7 +30,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((result) => {
-     //   console.log(result);
+        //   console.log(result);
         const newdata = data.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -55,7 +55,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((result) => {
-       // console.log(result);
+        // console.log(result);
         const newdata = data.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -81,7 +81,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((result) => {
-      //  console.log(result);
+        //  console.log(result);
         const newdata = data.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -103,7 +103,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((result) => {
-       // console.log(result);
+        // console.log(result);
         const newdata = data.filter((item) => {
           return item._id !== result._id;
         });
@@ -115,7 +115,7 @@ export default function Home() {
       {data.map((item) => {
         return (
           <div className="card home-card" key={item._id}>
-            <h5 style={{ padding: "5px" }}>
+            <h5 style={{}}>
               <Link
                 to={
                   item.postedBy._id !== state._id
@@ -123,8 +123,19 @@ export default function Home() {
                     : "/profile"
                 }
               >
-                {" "}
-                POSTED BY:-{item.postedBy.name.toUpperCase()}
+                <img
+                  src={item.postedBy.photo}
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    borderRadius: "80px",
+                    marginLeft: "20px",
+                    marginRight: "10px",
+                    marginTop: "10px",
+                  }}
+                  className="circle responsive-img"
+                />
+                {item.postedBy.name.toUpperCase()}
               </Link>
 
               {item.postedBy._id == state._id && (
@@ -144,19 +155,21 @@ export default function Home() {
             <div className="card-content">
               {/* <i className="material-icons">favorite</i> */}
               {item.likes.includes(state._id) ? (
-                <button
-                  className="btn-floating btn-large waves-effect waves-light red"
+                <i
+                  className="material-icons"
                   onClick={() => unlikePost(item._id)}
+                  style={{ color: "red", fontSize: "48px" }}
                 >
-                  <i className="material-icons">thumb_down</i>
-                </button>
+                  favorite
+                </i>
               ) : (
-                <button
-                  className="btn-floating btn-large waves-effect waves-light #00695c teal darken-3"
+                <i
+                  className="material-icons"
                   onClick={() => likePost(item._id)}
+                  style={{ color: "black", fontSize: "48px" }}
                 >
-                  <i className="material-icons">thumb_up</i>
-                </button>
+                  favorite_border
+                </i>
               )}
               <h6>{item.likes.length} LIKES</h6>
               <h6>{item.title}</h6>
