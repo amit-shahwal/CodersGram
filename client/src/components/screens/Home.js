@@ -13,6 +13,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((result) => {
+        console.log(result);
         Setdata(result.post);
         console.log(result.post);
       });
@@ -110,6 +111,7 @@ export default function Home() {
         Setdata(newdata);
       });
   };
+  console.log(data);
   return (
     <div className="home">
       {data.map((item) => {
