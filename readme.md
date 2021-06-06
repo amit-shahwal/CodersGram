@@ -15,6 +15,7 @@ Users can log in using their email id and password.
 
 ### 2. HOME: 
 Users can view all the posts themselves and others have added and can like the post and even comment on that.
+
 ![alt text](https://i.ibb.co/vHjwGv3/HOMEPAGE.jpg)
 
 ### 3. PROFILE:
