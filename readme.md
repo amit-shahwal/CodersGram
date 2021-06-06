@@ -11,19 +11,25 @@ Enter full name, email and set a password.
 
 ### 2. Login: 
 Users can log in using their email id and password.
+
 ![alt text](https://i.ibb.co/Yt1scs6/SIGNUP.jpg)
 
 ### 2. HOME: 
+
 Users can view all the posts themselves and others have added and can like the post and even comment on that.
 
 ![alt text](https://i.ibb.co/vHjwGv3/HOMEPAGE.jpg)
 
 ### 3. PROFILE:
+
 Users can see their as well as other profiles too.
+
 ![alt text](https://i.ibb.co/nL6m8vR/profile.jpg)
 
 ### 4. Following Posts
+
 Having a particular section to just views the following posts.
+
 ![alt text](https://i.ibb.co/yYVbRnx/following.jpg)
 
 ## Tech Stack/Technologies Used
