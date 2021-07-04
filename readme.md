@@ -49,7 +49,7 @@ Having a particular section to just views the following posts.
 3. Copy the following command in the terminal to clone the project:
 #### `git clone https://github.com/amit-shahwal/CodersGram.git`
 4. Change your current directory to the cloned directory.
-6. Add MONGOURL ad DB and SECRET as SECRET in env file in the root of the directory.
+6. Add MONGOURL as DB and SECRET as SECRET in env file in the root of the directory.
 7. In the project directory, run:
 #### `npm start`
 Runs the app in the development mode.
